@@ -60,4 +60,3 @@ private:
     sf::Font buttonFont;  
     sf::Text buttonText;  
 };
-
