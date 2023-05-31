@@ -139,7 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BTNsf.cpp" />
+    <ClCompile Include="TabMaster.cpp" />
     <ClCompile Include="UI_Pow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BTNsf.h" />
+    <ClInclude Include="TabMaster.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
