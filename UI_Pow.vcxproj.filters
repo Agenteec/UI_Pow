@@ -26,5 +26,13 @@
     <ClInclude Include="BTNsf.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClCompile Include="Tab.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Tab.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
