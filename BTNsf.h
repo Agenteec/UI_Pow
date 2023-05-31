@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <string>
 class Button : public sf::RectangleShape {
 public:
     Button(float width, float height) : sf::RectangleShape(sf::Vector2f(width, height)) {
@@ -16,6 +17,7 @@ public:
         buttonText.setCharacterSize(20);
         buttonText.setFillColor(sf::Color::Black);
         buttonText.setString("Button");
+        buttonString = "Button";
         buttonText.setPosition(width / 2 - buttonText.getGlobalBounds().width / 2,
             height / 2 - buttonText.getGlobalBounds().height / 2);
     }
@@ -46,17 +48,22 @@ public:
 
     void setText(const std::string& text) {
         buttonText.setString(text);
-        buttonText.setPosition(getSize().x / 2 - buttonText.getGlobalBounds().width / 2,
-            getSize().y / 2 - buttonText.getGlobalBounds().height / 2);
+        sf::FloatRect textBounds = buttonText.getLocalBounds();
+        sf::Vector2f buttonSize = getSize();
+        buttonText.setOrigin(textBounds.left + textBounds.width / 2.0f,
+            textBounds.top + textBounds.height / 2.0f);
+        buttonText.setPosition(buttonSize.x / 2.0f, buttonSize.y / 2.0f);
     }
 
     void setPosition(sf::Vector2f pos)
     {
         this->sf::RectangleShape::setPosition(pos);
         buttonText.setPosition(sf::Vector2f(pos.x,pos.y));
+        setText(buttonString);
     }
 private:
     bool enabled;
     sf::Font buttonFont;  
-    sf::Text buttonText;  
+    sf::Text buttonText;
+    std::string buttonString;
 };
