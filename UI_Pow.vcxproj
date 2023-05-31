@@ -147,9 +147,7 @@
     <ClInclude Include="BTNsf.h" />
     <ClInclude Include="Tab.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Tab.h" />
-  </ItemGroup>
+  
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
