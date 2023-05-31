@@ -1,32 +1,34 @@
 ﻿
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Tab.h"
 #pragma region SFMLFont
 sf::Font font;
 
 #pragma endregion
 void openWindow2(sf::RenderWindow &w) {
     sf::Event event;
-while (w.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                w.close();
-        }
-w.clear(sf::Color::White);
-w.display();
+    while (w.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+        w.close();
+    }
+    w.clear(sf::Color::White);
+    w.display();
 }
 
 int main()
 {
+
     if (!font.loadFromFile("Fonts\\arial.ttf"))
     {
         std::cout << "Unable to load font!\n";
         return EXIT_FAILURE;
     }
     //
-    sf::RenderWindow window1(sf::VideoMode(800, 600), L"Окно 1");
-    sf::RenderWindow window2(sf::VideoMode(800, 600), L"Окно 2");
-    while (window1.isOpen() && window2.isOpen())
+    sf::RenderWindow window1(sf::VideoMode(800, 600), L"UI Pow");
+    sf::RenderWindow window2(sf::VideoMode(800, 600), L"Tab");
+    while (window1.isOpen())
     {
 
         sf::Event event;
