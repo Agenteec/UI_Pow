@@ -5,6 +5,17 @@
 sf::Font font;
 
 #pragma endregion
+void openWindow2(sf::RenderWindow &w) {
+    sf::Event event;
+while (w.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                w.close();
+        }
+w.clear(sf::Color::White);
+w.display();
+}
+
 int main()
 {
     if (!font.loadFromFile("Fonts\\arial.ttf"))
@@ -24,20 +35,12 @@ int main()
             if (event.type == sf::Event::Closed)
                 window1.close();
         }
-
-        while (window2.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window2.close();
-        }
+        openWindow2(window2);
+        
         // Обновление и отрисовка содержимого окон
         window1.clear(sf::Color::White);
         // Рисуем содержимое окна 1
         window1.display();
-
-        window2.clear(sf::Color::Black);
-        // Рисуем содержимое окна 2
-        window2.display();
     }
 
     return 0;
