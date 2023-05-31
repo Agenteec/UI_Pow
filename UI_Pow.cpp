@@ -95,8 +95,18 @@ int main() {
   
             if (ImGui::Combo(u8"Create massive",&CBIndex,CBText,2))
             {
-
-                //showLocalGame = true;
+                
+                switch (CBIndex)
+                {
+                case 0:
+                    //Random
+                    break;
+                case 1:
+                    //Test
+                    break;
+                default:
+                    break;
+                }
             }
         ImGui::Spacing();
         ImGui::SameLine();
