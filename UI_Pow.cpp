@@ -1,7 +1,7 @@
 ﻿
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Tab.h"
+#include "Tabs.h"
 #include "BTNsf.h"
 #pragma region SFMLFont
 sf::Font font;
@@ -29,7 +29,7 @@ int main()
     sf::RenderWindow window1(sf::VideoMode(800, 600), L"UI Pow");
     sf::RenderWindow window2(sf::VideoMode(800, 600), L"Tab");
     Button ShovTab(80,35);
-    ShovTab.setPosition(Vector2f(100,100));
+    ShovTab.setPosition(sf::Vector2f(100,100));
     ShovTab.setFont(font);
 
     while (window1.isOpen())

@@ -19,7 +19,7 @@ public:
         buttonText.setPosition(width / 2 - buttonText.getGlobalBounds().width / 2,
             height / 2 - buttonText.getGlobalBounds().height / 2);
     }
-
+    
 
     void setFont(sf::Font& font){ buttonFont = font;}
 
