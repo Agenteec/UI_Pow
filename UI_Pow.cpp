@@ -21,44 +21,6 @@ void ShowWindow(sf::RenderWindow &w) {
     w.clear(sf::Color::White);
     w.display();
 }
-
-//int main()
-//{
-//
-//    if (!font.loadFromFile("Fonts\\arial.ttf"))
-//    {
-//        std::cout << "Unable to load font!\n";
-//        return EXIT_FAILURE;
-//    }
-//    sf::RenderWindow window1(sf::VideoMode(800, 600), L"UI Pow");
-//    sf::RenderWindow window2(sf::VideoMode(800, 600), L"Tab");
-//    Button ShovTab(80,35);
-//    ShovTab.setPosition(sf::Vector2f(100,100));
-//    ShovTab.setFont(font);
-//
-//    while (window1.isOpen())
-//    {
-//
-//        sf::Event event;
-//        while (window1.pollEvent(event))
-//        {
-//            if (event.type == sf::Event::Closed)
-//                window1.close();
-//        }
-//        openWindow2(window2);
-//        
-//
-//        // Обновление и отрисовка содержимого окон
-//        window1.clear(sf::Color::White);
-//        #pragma region UI
-//        ShovTab.draw(window1);
-//        #pragma endregion
-//        window1.display();
-//    }
-//
-//    return 0;
-//}
-
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), L"Марина Можаева ИС1-Б22 QT-GI-17");
     sf::RenderWindow tab(sf::VideoMode(1000, 900), L"Марина Можаева ИС1-Б22 QT-GI-17");
@@ -102,6 +64,7 @@ int main() {
 
             if (te.type == sf::Event::Closed)
                 tab.setVisible(false);
+            t.drawPow(tab,te);
         }
 
 

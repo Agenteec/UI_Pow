@@ -9,11 +9,23 @@ using namespace sf;
 class Tab
 {
 	Font font;
+	RectangleShape pods;
+	Text podst;
+	bool isPD = 0;
 public:
 	Tab(Font font) :IsInit(0),font(font){
-	
+		pods = RectangleShape(Vector2f(45, 15));
+		pods.setFillColor(Color::White);
+		pods.setOutlineColor(Color::Black);
+		pods.setOutlineThickness(1);
+		podst.setFont(this->font);
+		podst.setFillColor(Color(0,0,0));
+		podst.setCharacterSize(10);
+		podst.setString("0");
+
 	}
 	int x, y;
+	Vector2i pos;
 	void draw(RenderWindow& w) {
 		for (size_t i = 0; i < 15; i++)
 		{
@@ -21,6 +33,36 @@ public:
 			{
 				w.draw(mas[i][j].rect);
 				w.draw(mas[i][j].text);
+				
+			}
+		}
+		if (isPD)
+		{
+			w.draw(pods);
+			podst.setPosition(pods.getPosition().x+10, pods.getPosition().y);
+			w.draw(podst);
+		}
+		
+	}
+	void drawPow(RenderWindow& w,sf::Event e) {
+		pos = sf::Mouse::getPosition(w);
+		for (size_t i = 0; i < 15; i++)
+		{
+			for (size_t j = 0; j < 15; j++)
+			{
+				if (mas[i][j].color!=0)
+				{
+					if (mas[i][j].rect.getGlobalBounds().contains(pos.x, pos.y))
+					{
+						pods.setPosition(pos.x,pos.y);
+						podst.setString(std::to_string((int)(mas[i][j].color+1))+"^"+std::to_string(wich_pow(mas[i][j].data)));
+						isPD = 1;
+						i = 15;
+						break;
+					}
+					isPD = 0;
+				}
+				
 			}
 		}
 	}
