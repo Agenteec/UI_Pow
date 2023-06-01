@@ -8,15 +8,17 @@ void Tab::Test_click() {
 				c++;
 			}
 		}
+		Tab::Init();
 	}
 void Tab::Random_click() {
 		srand(time(NULL));
 		for (int i = 0; i < 15; i++)
 		{
-			for (int j = 0; i < 15; i++) {
-				mas[i][j].data = rand() % (1000 - 0 + 1) + 0;
+			for (int j = 0; j < 15; j++) {
+				mas[i][j].data = rand()%(10000 - 0 + 1) + 0;
 			}
 		}
+		Tab::Init();
 	}
 int Tab::Find_clicked() {
 		int n = 0;
@@ -39,6 +41,7 @@ int Tab::Find_clicked() {
 				}
 			}
 		}
+		Tab::Init();
 		return n;
 
 	}

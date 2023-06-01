@@ -31,11 +31,24 @@ public:
 		{
 			for (size_t j = 0; j < 15; j++)
 			{
-				mas[i][j].data = i * 15 + j + 1;
-				mas[i][j].color = 0;
+				
 
 				mas[i][j].rect.setSize(sf::Vector2f(50.f, 50.f));
-				mas[i][j].rect.setFillColor(sf::Color::White);
+				switch (mas[i][j].color)
+				{
+				case 0:
+					mas[i][j].rect.setFillColor(sf::Color::White);
+					break;
+				case 1:
+					mas[i][j].rect.setFillColor(sf::Color(156,48,210));
+					break;
+				case 2:
+					mas[i][j].rect.setFillColor(sf::Color(120, 48, 210));
+					break;
+				default:
+					break;
+				}
+				
 				mas[i][j].rect.setOutlineColor(sf::Color::Black);
 				mas[i][j].rect.setOutlineThickness(1.f);
 				mas[i][j].rect.setPosition(60.f + j * 55.f, 60.f + i * 55.f);

@@ -62,7 +62,13 @@ void ShowWindow(sf::RenderWindow &w) {
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), L"Марина Можаева ИС1-Б22 QT-GI-17");
     sf::RenderWindow tab(sf::VideoMode(1000, 900), L"Марина Можаева ИС1-Б22 QT-GI-17");
-
+    //tab.close();
+    tab.setVisible(false);
+    if (!font.loadFromFile("Fonts\\arial.ttf"))
+    {
+        std::cout << "Unable to load font!\n";
+        return EXIT_FAILURE;
+    }
     ImGui::SFML::Init(window);
 
     bool createMassive = false;
@@ -73,6 +79,13 @@ int main() {
     const char* CBText[2] = {"Random","Test"};
     Tab t(font);
     t.Init();
+    Text Pcount;
+    Pcount.setFont(font);
+    Pcount.setFillColor(Color(204,224,255));
+    Pcount.setCharacterSize(16);
+    Pcount.setPosition(Vector2f(630,40));
+    Pcount.setString(L"Кол-во степеней:");
+    bool isInit = 0;
     while (window.isOpen())
     {
         sf::Event event;
@@ -83,6 +96,14 @@ int main() {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+        sf::Event te;
+        while (tab.pollEvent(te))
+        {
+
+            if (te.type == sf::Event::Closed)
+                tab.setVisible(false);
+        }
+
 
         ImGui::SFML::Update(window, sf::seconds(1.f / 60.f));
         // Создание главного окна imgui
@@ -102,9 +123,11 @@ int main() {
                 {
                 case 0:
                     t.Random_click();
+                    isInit = 1;
                     break;
                 case 1:
                     t.Test_click();
+                    isInit = 1;
                     break;
                 default:
                     break;
@@ -114,14 +137,15 @@ int main() {
         ImGui::SameLine();
             if (ImGui::Button(u8"Find", ImVec2(200.f, 50.f)))
             {
-                std::cout << t.Find_clicked() << std::endl;
+                Pcount.setString(L"Кол - во степеней :" + std::to_string(t.Find_clicked()));
+                isInit = 1;
             }
         //ImGui::Spacing();
         ImGui::SameLine();
-        if (1)
+        if (isInit)
             if (ImGui::Button(u8"Show", ImVec2(200.f, 50.f)))
             {
-
+                tab.setVisible(true);
             }
         //ImGui::Spacing();
         ImGui::SameLine();
@@ -139,10 +163,11 @@ int main() {
         ImGui::SFML::Render(window);
         t.draw(tab);
         tab.display();
+        window.draw(Pcount);
         window.display();
     }
 
     ImGui::SFML::Shutdown();
-
+    
     return 0;
 }
