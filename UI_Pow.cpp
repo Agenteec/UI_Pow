@@ -44,7 +44,7 @@ int main() {
     Text Pcount;
     Pcount.setFont(font);
     Pcount.setFillColor(Color(204,224,255));
-    Pcount.setCharacterSize(16);
+    Pcount.setCharacterSize(15);
     Pcount.setPosition(Vector2f(630,40));
     Pcount.setString(L"Кол-во степеней:");
     bool isInit = 0;
@@ -100,7 +100,18 @@ int main() {
         ImGui::SameLine();
             if (ImGui::Button(u8"Find", ImVec2(200.f, 50.f)))
             {
-                Pcount.setString(L"Кол - во степеней :" + std::to_string(t.Find_clicked()));
+                int x = t.Find_clicked();
+                if (x>0)
+                {
+                    Pcount.setString(L"Кол - во степеней :" + std::to_string(x));
+                    Pcount.setFillColor(Color(204, 224, 255));
+                }
+                else
+                {
+                    Pcount.setString(L"Нет степенных \nзначений!");
+                    Pcount.setFillColor(Color::Red);
+                }
+                
                 isInit = 1;
             }
         //ImGui::Spacing();
