@@ -3,7 +3,7 @@ void Tab::Test_click() {
 		int c = 1;
 		for (int i = 0; i < 15; i++)
 		{
-			for (int j = 0; i < 15; i++) {
+			for (int j = 0; j < 15; j++) {
 				mas[i][j].data = c;
 				c++;
 			}
@@ -14,7 +14,7 @@ void Tab::Random_click() {
 		for (int i = 0; i < 15; i++)
 		{
 			for (int j = 0; i < 15; i++) {
-				mas[i][j].data = rand();
+				mas[i][j].data = rand() % (1000 - 0 + 1) + 0;
 			}
 		}
 	}
@@ -22,7 +22,7 @@ int Tab::Find_clicked() {
 		int n = 0;
 		for (int i = 0; i < 15; i++)
 		{
-			for (int j = 0; i < 15; i++) {
+			for (int j = 0; j < 15; j++) {
 				if (is_pow2(mas[i][j].data)) {
 					mas[i][j].color = 1;
 					n++;
@@ -35,6 +35,7 @@ int Tab::Find_clicked() {
 					else {
 						mas[i][j].color = 0;
 					}
+
 				}
 			}
 		}

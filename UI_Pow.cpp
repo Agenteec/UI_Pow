@@ -70,6 +70,7 @@ int main() {
     bool show = false;
     bool quit = false;
     int CBIndex = 0;
+    Tab tabl;
     const char* CBText[2] = {"Random","Test"};
     Tab t(font);
     t.Init();
@@ -101,10 +102,10 @@ int main() {
                 switch (CBIndex)
                 {
                 case 0:
-                    //Random
+                    tabl.Random_click();
                     break;
                 case 1:
-                    //Test
+                    tabl.Test_click();
                     break;
                 default:
                     break;
@@ -114,7 +115,7 @@ int main() {
         ImGui::SameLine();
             if (ImGui::Button(u8"Find", ImVec2(200.f, 50.f)))
             {
-                //showNetworkGame = true;
+                std::cout << tabl.Find_clicked() << std::endl;
             }
         //ImGui::Spacing();
         ImGui::SameLine();
