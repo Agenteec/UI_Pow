@@ -61,7 +61,7 @@ void ShowWindow(sf::RenderWindow &w) {
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), L"Марина Можаева ИС1-Б22 QT-GI-17");
-    //sf::RenderWindow tab(sf::VideoMode(800, 600), L"Марина Можаева ИС1-Б22 QT-GI-17");
+    sf::RenderWindow tab(sf::VideoMode(1000, 900), L"Марина Можаева ИС1-Б22 QT-GI-17");
 
     ImGui::SFML::Init(window);
 
@@ -71,6 +71,8 @@ int main() {
     bool quit = false;
     int CBIndex = 0;
     const char* CBText[2] = {"Random","Test"};
+    Tab t(font);
+    t.Init();
     while (window.isOpen())
     {
         sf::Event event;
@@ -132,9 +134,11 @@ int main() {
         ImGui::End();
 
         window.clear();
+        tab.clear();
 
         ImGui::SFML::Render(window);
-
+        t.draw(tab);
+        tab.display();
         window.display();
     }
 
